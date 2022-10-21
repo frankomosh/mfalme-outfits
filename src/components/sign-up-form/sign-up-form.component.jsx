@@ -9,7 +9,7 @@ const defaultFormFields={
     displayName:'',
     email:'',
     password: '',
-    confirmPassword:''
+    confirmPassword:'',
 }
 
 const SignUpForm =()=>{
@@ -71,7 +71,7 @@ const SignUpForm =()=>{
                 required 
                 onChange={handleChange} 
                 name='email' 
-                value={displayName}
+                value={email}
             />
             <FormInput 
                 label="Password"
@@ -79,7 +79,7 @@ const SignUpForm =()=>{
                 required 
                 onChange={handleChange} 
                 name='password' 
-                value={displayName}
+                value={password}
             />
             <FormInput 
                 label="Confirm Password"
@@ -87,7 +87,7 @@ const SignUpForm =()=>{
                 required 
                 onChange={handleChange} 
                 name='confirmPassword' 
-                value={displayName}
+                value={confirmPassword}
             />
                  <Button type="submit">Sign Up</Button>
             </form>

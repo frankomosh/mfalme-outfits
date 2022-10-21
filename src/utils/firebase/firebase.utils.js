@@ -1,16 +1,26 @@
 import {initializeApp} from 'firebase/app';
-import {getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword} from 'firebase/auth';
+import {getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC5NGynOHRvOZyht4LcTMpde4RC9oKYdt0",
-    authDomain: "cwn-clothing-db-704c8.firebaseapp.com",
-    projectId: "cwn-clothing-db-704c8",
-    storageBucket: "cwn-clothing-db-704c8.appspot.com",
-    messagingSenderId: "265964205380",
-    appId: "1:265964205380:web:33501d6402695f90c6d311"
+    // apiKey: "AIzaSyC5NGynOHRvOZyht4LcTMpde4RC9oKYdt0",
+    // authDomain: "cwn-clothing-db-704c8.firebaseapp.com",
+    // projectId: "cwn-clothing-db-704c8",
+    // storageBucket: "cwn-clothing-db-704c8.appspot.com",
+    // messagingSenderId: "265964205380",
+    // appId: "1:265964205380:web:33501d6402695f90c6d311"
+    apiKey: "AIzaSyAPT7_IXeqMaoIgtKnqlfJYcNggAZmnsXQ",
+    authDomain: "mfalme-outfits.firebaseapp.com",
+    projectId: "mfalme-outfits",
+    storageBucket: "mfalme-outfits.appspot.com",
+    messagingSenderId: "333663862051",
+    appId: "1:333663862051:web:c11ed00214e19ef7146096",
+    // measurementId: "G-WKGH9G53N2"
+
+
+
   };
 
 
@@ -69,4 +79,10 @@ const firebaseConfig = {
     if (!email || !password) return;
 
    return await createUserWithEmailAndPassword(auth, email, password)
+  }
+
+  export const signInAuthUserWithEmailAndPassword = async (email, password)=>{
+    if (!email || !password) return;
+
+   return await signInWithEmailAndPassword(auth, email, password)
   }

@@ -1,9 +1,7 @@
 import './button.styles.scss';
-// import { children } from "react";
+import { children } from "react";
 
-// default button
-//inverted button
-//google sign in button
+
 const BUTTON_TYPE_CLASSES={
     goofle:'google-sign-in',
     inverted: 'inverted'
