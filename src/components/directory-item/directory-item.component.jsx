@@ -1,22 +1,38 @@
-import './directory-item.styles.scss';
+// // import './directory-item.styles.scss';
+// import { DirectoryItemContainer, Body, BackgroundImage } from "./directory-item.styles";
 
 
+// const DirectoryItem=({category})=>{
+//     const {imageUrl, title}=category;
+//     return (
+//         <DirectoryItemContainer>
+//          <BackgroundImage imageUrl={imageUrl}/>
+//         <Body>
+//           <h2>{title}</h2>
+//           <p>Shop Now</p>
+//         </Body>
+//       </DirectoryItemContainer>
+//     );
 
-const DirectoryItem=({category})=>{
-    const {imageUrl, title}=category;
-    return (
-        <div className="directory-item-container">
-          <div className="background-image" 
-          style={{
-            backgroundImage:`url(${imageUrl})`
-          }}/>
-        <div className="body">
-          <h2>{title}</h2>
-          <p>Shop Now</p>
+// };
+// export default DirectoryItem;
+import {
+  BackgroundImage,
+  Body,
+  DirectoryItemContainer,
+} from './directory-item.styles';
 
-        </div>
-      </div>
-    );
-
+const DirectoryItem = ({ category }) => {
+  const { imageUrl, title } = category;
+  return (
+    <DirectoryItemContainer>
+      <BackgroundImage imageUrl={imageUrl} />
+      <Body>
+        <h2>{title}</h2>
+        <p>Shop Now</p>
+      </Body>
+    </DirectoryItemContainer>
+  );
 };
+
 export default DirectoryItem;
