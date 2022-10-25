@@ -9,17 +9,12 @@ import {
   signOut,
   onAuthStateChanged
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from 'firebase/firestore';
 
 
 
 const firebaseConfig = {
-    // apiKey: "AIzaSyC5NGynOHRvOZyht4LcTMpde4RC9oKYdt0",
-    // authDomain: "cwn-clothing-db-704c8.firebaseapp.com",
-    // projectId: "cwn-clothing-db-704c8",
-    // storageBucket: "cwn-clothing-db-704c8.appspot.com",
-    // messagingSenderId: "265964205380",
-    // appId: "1:265964205380:web:33501d6402695f90c6d311"
+    
     apiKey: "AIzaSyAPT7_IXeqMaoIgtKnqlfJYcNggAZmnsXQ",
     authDomain: "mfalme-outfits.firebaseapp.com",
     projectId: "mfalme-outfits",
@@ -29,11 +24,8 @@ const firebaseConfig = {
     // measurementId: "G-WKGH9G53N2"
 
 
-
   };
-
-
-   
+  
 
    const firebaseApp = initializeApp(firebaseConfig);
 
@@ -43,10 +35,36 @@ const firebaseConfig = {
   });
   export const auth = getAuth();
   export const signInWithGooglePopup=()=> signInWithPopup(auth, provider);
-//   export const signInWithGoogleRedirect=()=> signInWithRedirect(auth, googleProvider);
+
   
   export const db = getFirestore();
-  
+
+  export const addCollectionAndDocuments= async (collectionKey, objectsToAdd, field)=>{
+    const collectionRef=collection(db, collectionKey)
+    const batch =writeBatch(db);
+
+    objectsToAdd.forEach((object)=>{
+      const docRef=doc(collectionRef, object.title.toLowerCase());
+      batch.set(docRef, object);
+    });
+    await batch.commit();
+    console.log('done');
+
+  };  
+  export const getCategoriesAndDocuments = async()=>{
+    const collectionRef=collection(db, 'categories');
+    const q=query(collectionRef);
+    const querySnapshot= await getDocs(q);
+    const categoryMap=querySnapshot.docs.reduce((acc, docSnapshot)=>{
+      const{title, items}=docSnapshot.data();
+      acc[title.toLowerCase()]=items;
+      return acc;
+
+    }, {});
+
+    return categoryMap;
+
+  }
 
   export const createUserDocumentFromAuth = async (
     userAuth, 
@@ -61,8 +79,6 @@ const firebaseConfig = {
 
      console.log(userSnapshot.exists());
 
-     //if user data does not exist
-     //create /set the document with the data from userAuth in my collection
      if(! userSnapshot.exists()){
         const {displayName, email}=userAuth;
         const createdAt = new Date();
@@ -78,9 +94,6 @@ const firebaseConfig = {
         }
      }
 
-     
-     //if user data exists
-     //return userDocRef
      return userDocRef
 
   }
