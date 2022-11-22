@@ -7,12 +7,14 @@ import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
 
 
+
 // const Shop=()=>{
 //   return <h1>The SHop Page Here</h1>
 
 // };
 const App =()=> {
   return (
+    
     <Routes>
         <Route path='/' element={<Navigation />} >
           <Route index element={<Home/ >} />
@@ -21,7 +23,9 @@ const App =()=> {
           <Route path='checkout' element={<Checkout />}/>
         </Route>
         
+        
     </Routes>
+  
 
   );
  
