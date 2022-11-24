@@ -12,12 +12,12 @@ import { NavigationContainer, NavLinks, NavLink, LogoContainer } from "./navigat
 // import { UserContext } from "../../contexts/user.context";
 import { CartContext } from "../../contexts/cart.context";
 import { signOutUser  } from "../../utils/firebase/firebase.utils";
-
-
-
+import { selectCurrentUser } from "../../store/user/user.selector";
 
 const Navigation=()=>{
-  
+    // const {currentUser}=useContext(UserContext);
+  const currentUser= useSelector(selectCurrentUser)
+
     const {isCartOpen}=useContext(CartContext)
     
     // console.log(currentUser);
