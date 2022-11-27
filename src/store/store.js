@@ -4,9 +4,9 @@ import { rootReducer } from "./root-reducer";
 
 //root-reducer-combination of all reducers
 
-const middlewares = [logger];
+const middleWares = [logger];
 
-const composedEnhancers = compose(applyMiddleware(...middlewares));
+const composedEnhancers = compose(applyMiddleware(...middleWares));
 
 export const store= createStore(rootReducer, undefined, composedEnhancers );
 
