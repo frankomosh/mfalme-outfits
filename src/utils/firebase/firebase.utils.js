@@ -22,7 +22,7 @@ import {
 
 const firebaseConfig = {
   apiKey: "AIzaSyAPT7_IXeqMaoIgtKnqlfJYcNggAZmnsXQ",
-  authDomain: "mfalme-outfits.firebaseapp.com",
+  authDomain: "mfalme-outfits.firebasapp.com",
   projectId: "mfalme-outfits",
   storageBucket: "mfalme-outfits.appspot.com",
   messagingSenderId: "333663862051",
@@ -30,6 +30,7 @@ const firebaseConfig = {
    // measurementId: "G-WKGH9G53N2"
 
 };
+
 
 const firebaseApp = initializeApp(firebaseConfig);
 
